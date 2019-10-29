@@ -11,3 +11,31 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.searchForm {
+  margin-top: 20px;
+  margin-left: 3%;
+  width: 30%
+}
+
+.latestComic {
+  margin-top: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.searchedComic {
+  margin-top: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.newStoryLogo{
+  margin-left: 10px;
+  width: 30px;
+  height: 30px;
+}
