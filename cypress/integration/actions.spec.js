@@ -1,7 +1,7 @@
 
 context('Actions', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/search')
+    cy.visit('https://xkcd-webcomic-app.firebaseapp.com/search')
   })
 
   it('.type() - type into a DOM element', () => {

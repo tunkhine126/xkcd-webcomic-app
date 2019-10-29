@@ -1,6 +1,6 @@
 context('Aliasing', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/search')
+    cy.visit('https://xkcd-webcomic-app.firebaseapp.com/search')
   })
 
   it('.as() - alias a DOM element for later use', () => {

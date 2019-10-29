@@ -2,7 +2,7 @@
 
 context('Navigation', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:3000/')
+    cy.visit('https://xkcd-webcomic-app.firebaseapp.com')
     cy.get('.navbar-nav').contains('Latest').click()
     cy.get('.navbar-nav').contains('Search').click()
   })
@@ -41,7 +41,7 @@ context('Navigation', () => {
     // Visit any sub-domain of your current domain
 
     // Pass options to the visit
-    cy.visit('http://localhost:3000/', {
+    cy.visit('https://xkcd-webcomic-app.firebaseapp.com', {
       timeout: 50000, // increase total time for the visit to resolve
       onBeforeLoad (contentWindow) {
         // contentWindow is the remote page's window object
@@ -52,7 +52,7 @@ context('Navigation', () => {
         expect(typeof contentWindow === 'object').to.be.true
       },
     })
-    cy.visit('http://localhost:3000/search', {
+    cy.visit('https://xkcd-webcomic-app.firebaseapp.com/search', {
       timeout: 50000, // increase total time for the visit to resolve
       onBeforeLoad(contentWindow) {
         // contentWindow is the remote page's window object
