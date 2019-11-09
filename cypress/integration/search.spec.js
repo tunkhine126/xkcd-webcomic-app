@@ -1,9 +1,9 @@
-context('Aliasing', () => {
+context('Search page classNames', () => {
   beforeEach(() => {
     cy.visit('https://xkcd-webcomic-app.firebaseapp.com/search')
   })
 
-  it('.as() - alias a DOM element for later use', () => {
+  it('should have specific class names for elements', () => {
     cy.get('.search')
       .should('have.class', 'search')
 
