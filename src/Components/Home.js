@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
+import ReactLoading from 'react-loading';
 
 const URL = 'https://xkcd.now.sh/?comic=latest'
 
 class Home extends Component {
 
   state = {
-    latestComic: []
+    latestComic: [],
+    loading: true
   }
 
   componentDidMount() {
@@ -15,7 +17,11 @@ class Home extends Component {
   fetchLatest = () => {
     fetch(URL)
       .then(res => res.json())
-      .then(data => this.setState({ latestComic: data }))
+      .then(data => this.setState({ 
+        latestComic: data,
+        loading: false,
+      })
+    )
   }
 
   render() {
@@ -24,10 +30,18 @@ class Home extends Component {
     const details = `#${comic.num} - ${comic.month}/${comic.day}/${comic.year}`
     
     return (
-      <div className="latestComic">
-        { comic ? <h2>{title}</h2> : null }
-        { comic ? <img className="latestImage" src={comic.img} title={comic.alt} alt={comic.title} /> : null } 
-        { !details.includes("undefined") ? <p>{details}</p> : null } 
+      <div>
+        {this.state.loading ? (
+          <div className="loader">
+            <ReactLoading type={"bars"} color={"grey"} />
+          </div>
+        ) : (
+            <div className="latestComic">
+              {comic ? <h2>{title}</h2> : null}
+              {comic ? <img className="latestImage" src={comic.img} title={comic.alt} alt={comic.title} /> : null}
+              {!details.includes("undefined") ? <p>{details}</p> : null}
+            </div>
+        )}
       </div>
     )
   }
