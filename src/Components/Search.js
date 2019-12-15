@@ -13,14 +13,14 @@ class Search extends Component {
     e.preventDefault()
     const input = e.target.search.value
 
-    if(!isNaN(input) && input <= 2230 ) {
+    if(!isNaN(input) && input <= 2241 ) {
       fetch(`${SearchURL}${input}`)
         .then(res => res.json())
         .then(data => this.setState({ userSearched: data }))
         .then(e.target.reset())
     }
     else {
-      alert(" Please try a number between 1 - 2230")
+      alert(" Please try a number between 1 - 2241")
     }
   }
 
