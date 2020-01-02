@@ -2,25 +2,41 @@ import React, { Component } from 'react'
 import { Form, FormControl, Button } from "react-bootstrap"
 
 const SearchURL = 'https://xkcd.now.sh/?comic='
+const URL = 'https://xkcd.now.sh/?comic=latest'
 
 class Search extends Component {
 
-  state= {
-    userSearched: []
+  state = {
+    userSearched: [],
+    currentComic: []
+  }
+
+  componentDidMount() {
+    this.fetchLatest()
+  }
+
+  fetchLatest = () => {
+    fetch(URL)
+      .then(res => res.json())
+      .then(data => this.setState({ 
+        currentComic: data,
+      })
+    )
   }
 
   fetchSearch = (e) =>{
     e.preventDefault()
     const input = e.target.search.value
+    const latestNum = this.state.currentComic.num
 
-    if(!isNaN(input) && input <= 2241 ) {
+    if(!isNaN(input) && input <= latestNum ) {
       fetch(`${SearchURL}${input}`)
         .then(res => res.json())
         .then(data => this.setState({ userSearched: data }))
         .then(e.target.reset())
     }
     else {
-      alert(" Please try a number between 1 - 2241")
+      alert(`" Please try a number between 1 - ${latestNum}"`)
     }
   }
 
